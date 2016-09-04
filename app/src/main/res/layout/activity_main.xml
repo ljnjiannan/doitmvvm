@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <data>
+    <variable name="mViewModel" type="com.nannan.doit.vm.HomeActivityVm"/>
+    <import type="me.tatarka.bindingcollectionadapter.LayoutManagers"/>
+  </data>
+
+  <android.support.v4.widget.DrawerLayout
+    android:id="@+id/draw_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <include layout="@layout/include_common_toolbar"/>
+
+      <FrameLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+          android:id="@+id/home_recycler_view"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:itemView="@{mViewModel.itemView}"
+          app:items="@{mViewModel.dataList}"
+          app:layoutManager="@{LayoutManagers.linear()}"
+          app:swipeItemTouch="@{mViewModel.onItemTouchCallbackListener}"
+        />
+
+        <android.support.design.widget.FloatingActionButton
+          android:id="@+id/fab_home_goto_game"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="bottom|end"
+          android:layout_marginRight="20dp"
+          android:layout_marginBottom="20dp"
+          android:src="@mipmap/ic_mission_add"
+          android:onClick="@{mViewModel::onClickListener}"
+        />
+
+      </FrameLayout>
+
+    </LinearLayout>
+
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="start"
+      android:background="#ffffff">
+
+    </FrameLayout>
+
+  </android.support.v4.widget.DrawerLayout>
+
+</layout>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <data>
+    <variable name="viewModel" type="com.nannan.doit.vm.HomeMissionListItemVm"/>
+  </data>
+
+  <android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    >
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center_vertical"
+      android:padding="8dp"
+      android:textColor="@{viewModel.missionModel.done ? @color/font_gray:@color/font_black}"
+      android:text="@{viewModel.missionModel.title}"
+      app:deleteState="@{viewModel.missionModel.done}"
+      />
+
+  </android.support.v7.widget.CardView>
+
+</layout>
+
